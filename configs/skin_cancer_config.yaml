@@ -1,0 +1,41 @@
+# Configuration file for skin cancer detection
+model:
+  name: "resnet50"
+  num_classes: 7
+  pretrained: true
+  dropout_rate: 0.5
+
+training:
+  batch_size: 32
+  num_epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  use_scheduler: true
+
+data:
+  dataset_type: "skin_cancer"
+  data_dir: "data/skin_cancer"
+  image_size: [224, 224]
+  test_size: 0.2
+  val_size: 0.1
+
+augmentation:
+  rotation: 10
+  horizontal_flip: 0.5
+  brightness: 0.2
+  contrast: 0.2
+  saturation: 0.2
+
+paths:
+  save_dir: "checkpoints/skin_cancer"
+  results_dir: "results/skin_cancer"
+
+class_names:
+  - "mel"       # Melanoma
+  - "nv"        # Melanocytic nevus
+  - "bcc"       # Basal cell carcinoma
+  - "akiec"     # Actinic keratosis
+  - "bkl"       # Benign keratosis
+  - "df"        # Dermatofibroma
+  - "vasc"      # Vascular lesion

@@ -1,0 +1,38 @@
+# Configuration file for brain tumor detection
+model:
+  name: "resnet50"
+  num_classes: 4
+  pretrained: true
+  dropout_rate: 0.5
+
+training:
+  batch_size: 32
+  num_epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  use_scheduler: true
+
+data:
+  dataset_type: "brain_tumor"
+  data_dir: "data/brain_tumor"
+  image_size: [224, 224]
+  test_size: 0.2
+  val_size: 0.1
+
+augmentation:
+  rotation: 15
+  horizontal_flip: 0.5
+  brightness: 0.1
+  contrast: 0.1
+  saturation: 0.1
+
+paths:
+  save_dir: "checkpoints/brain_tumor"
+  results_dir: "results/brain_tumor"
+
+class_names:
+  - "glioma"      # Glioma tumor
+  - "meningioma"  # Meningioma tumor
+  - "notumor"     # No tumor
+  - "pituitary"   # Pituitary tumor
